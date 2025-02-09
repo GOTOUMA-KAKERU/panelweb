@@ -1,0 +1,39 @@
+
+
+body,html{
+    margin: 0;
+    background-color: #ede9e4;
+}
+
+header{
+    height: 40px;
+    display: flex;
+}
+    header h1{
+        margin: 0;
+    }
+        header h1 img{
+            height: 40px;
+        }
+    #username{
+        margin: 0 0 0 auto;
+    }
+        #username_btn{
+            display: flex;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            height: 50px;
+        }
+        #username:hover{
+            background-color: #5c513d;
+        }
+            #username_btn img{
+                height: 18px;
+                margin: 1px 0;
+            }
+            #username_btn p{
+                font-size: 18px;
+                margin: 0;
+            }
