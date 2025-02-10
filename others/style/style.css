@@ -3,7 +3,7 @@
 @font-face {
     font-family: gokuhoso;
     font-display: swap;
-    src: url("./others/fonts/gokuhoso.ttf") format("TrueType");
+    src: url("../font/gokuhoso.ttf") format("TrueType");
 }
 
 /*keyframeたち*/
@@ -48,19 +48,52 @@ body{
     #main_manu ul{
         padding: 0;
     }
-    #main_manu li{
-        list-style: none;
-    }
+        #main_manu li{
+            list-style: none;
+        }
+        #main_manu li img{
+            height: 40px;
+            width: 40px;
+        }
 
 header{
-    height: 40px;
-    display: flex;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 180px 1fr 110px;
+    grid-template-rows: 50px;
 }
     header h1{
         margin: 0;
     }
         header h1 img{
-            height: 40px;
+            height: 45px;
+        }
+    #search_box{
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 0 5px;
+        height: 34px;
+        margin: auto;
+        box-shadow: inset #bababa2c 0px 0px 10px;
+    }
+        #search_box_submit{
+            width: 24px;
+            height: 24px;
+            margin: 3px 0 3px 3px;
+            background: none;
+            border: none;
+            background-image: url(../img/i_search.svg);
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+        #search_box_input{
+            margin: auto;
+            background: none;
+            border: none;
+            width: calc(100% - 40px);
+            outline: none;
         }
     #username{
         margin: 0 0 0 auto;
