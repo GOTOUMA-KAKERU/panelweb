@@ -16,11 +16,10 @@ function loadfinish(){
       filepath = filepath.replaceAll("/","");
       filepath = "m_u_" + filepath;
       var selected = document.getElementById(filepath);
-      console.log(selected);
       var selectedchild = selected.children;
       selectedchild[0].style.backgroundColor = "#7a6c52";
     })
     .catch(error => {
       console.error('Error loading the menu:', error);
-    });
+    })
 }

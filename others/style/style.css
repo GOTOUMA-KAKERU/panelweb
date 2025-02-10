@@ -80,13 +80,16 @@ body{
                 visibility: hidden;
                 margin: 0;
                 white-space: nowrap;
+                width: 0;
             }
                 #main_menu:hover .menu_text{
                     visibility: visible;
                     transition: visibility 0s linear 0.1s;
+                    width: fit-content;
                 }
             hr{
                 margin: 10px 5px;
+                color: #fef8e1;
             }
 
 
@@ -152,3 +155,46 @@ header{
                 font-size: 18px;
                 margin: auto 0;
             }
+
+#mains{
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+}
+    #mains h2{
+        margin: 0;
+        font-size: 14px;
+    }
+    .mains_large{
+        width: fit-content;
+        min-width: 100px;
+    }
+        .cards{
+            display: flex;
+            margin: 10px 0 0 0;
+        }
+            .card{
+                height: 60px;
+                width: 60px;
+                padding: 5px;
+            }
+            .card:hover{
+                background-color: #fffdfa;
+                border-radius: 10px;
+            }
+                .card a{
+                    color: #000;
+                    text-decoration: none;
+                }
+                .card img{
+                    height: 40px;
+                    width: 40px;
+                    background-color: #fffdfa;
+                    border-radius: 5px;
+                    margin: 0 10px;
+                }
+                .card p{
+                    margin: 0;
+                    text-align: center;
+                    padding: 0;
+                }
