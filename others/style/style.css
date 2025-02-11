@@ -27,6 +27,7 @@ html{
     margin: 0 0 0 55px;
     background-color: #ede9e4;
     font-family: "gokuhoso",serif;
+    -webkit-tap-highlight-color: transparent;
 }
 body{
     margin: 0;
@@ -98,6 +99,10 @@ header{
     display: grid;
     grid-template-columns: 180px 1fr 110px;
     grid-template-rows: 50px;
+    position: absolute;
+    top: 0;
+    width: calc(100vw - 50px);
+    z-index: 10;
 }
     header h1{
         margin: 0;
@@ -105,33 +110,79 @@ header{
         header h1 img{
             height: 45px;
         }
-    #search_box{
-        width: 100%;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 0 5px;
+    #search{
         height: 34px;
-        margin: auto;
-        box-shadow: inset #bababa2c 0px 0px 10px;
+        margin: auto 0;
     }
-        #search_box_submit{
-            width: 24px;
-            height: 24px;
-            margin: 3px 0 3px 3px;
-            background: none;
-            border: none;
-            background-image: url(../img/i_search.svg);
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-        }
-        #search_box_input{
+        #search_box{
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 0 5px;
+            height: 34px;
             margin: auto;
-            background: none;
-            border: none;
-            width: calc(100% - 40px);
-            outline: none;
+            box-shadow: inset #bababa2c 0px 0px 10px;
+            display: flex;
+            flex-direction: row-reverse;
         }
+        #search_list{
+            display: none;
+            background-color: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 0 5px 5px 5px;
+            width: 100%;
+        }
+            #search_list ul{
+                padding: 0;
+                margin: 0;
+            }
+            #search_list Ul li{
+                list-style: none;
+                border-radius: 2em;
+            }
+            #search_list ul li a{
+                text-decoration: none;
+                color: #000;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 30px 1fr;
+            }
+            #search_list ul li a img{
+                width: 20px;
+                height: 20px;
+                margin: 5px;
+            }
+            #search_list ul li a p{
+                margin: 0;
+            }
+                #search_list ul li:hover{
+                    background-color: #ddd;
+                }
+            #search_box_submit{
+                width: 24px;
+                height: 24px;
+                margin: 3px 0 3px 3px;
+                background: none;
+                border: none;
+                background-image: url(../img/i_search.svg);
+                background-size: cover;
+                background-position: center;
+                cursor: pointer;
+            }
+            #search_box_input{
+                margin: auto;
+                background: none;
+                border: none;
+                width: calc(100% - 40px);
+                outline: none;
+            }
+            #search_box:has(#search_box_input:focus){
+                border-radius: 10px 10px 0 0;
+                box-shadow: none;
+            }
+            #search_box:has(#search_box_input:focus) ~ #search_list{
+                display: block;
+            }
     #username{
         margin: 0 0 0 auto;
         border-radius: 0 0 0 15px;
@@ -159,6 +210,7 @@ header{
 #mains{
     display: flex;
     overflow-x: auto;
+    margin-top: 50px;
     width: 100%;
 }
     #mains h2{
