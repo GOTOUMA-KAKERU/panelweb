@@ -15,10 +15,14 @@ wss.on('connection', (ws) => {
     console.log('WebSocket connected');
 
     ws.on('message', (message) => {
-        console.log(message);
-        var typeofmessage = message.slice(0,2);
+        const messageutf8 = message.toString("utf-8");
+        var typeofmessage = messageutf8.slice(0,3);
+        const bodyofmessage = messageutf8.slice(3);
+
         if(typeofmessage == "se:"){
             //検索処理
+            console.log(bodyofmessage);
+
             const serchmessage = message.slice(3);
             //プロキシ処理
             const proxyUrl = "https://duckduckgo.com/ac/?q=" + serchmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む

@@ -12,7 +12,9 @@ function loadfinish(){
 
 
 //websocket関連
-const ws = new WebSocket('ws://bookish-broccoli-x599qqw9547qf9qjw-3000.app.github.dev');  // サーバーのURLに接続
+const domain = window.location.hostname;
+const ws = new WebSocket('wss://' + domain);  // サーバーのURLに接続
+console.log(ws);
 
 const history = "../others/img/i_history.svg";
 const search = "../others/img/i_search.svg";
@@ -25,11 +27,16 @@ sinput.addEventListener("focus", function() {
 
 //検索候補表示
 sinput.addEventListener("input" , function(){
-    console.log(sinput.value);
-    var aaa = getSuggestions(sinput.value);
+        console.log(sinput.value);
+        getSuggestions(sinput.value);
 });
-
+//検索候補取得リクエストする
 async function getSuggestions(query) {
-    const message = "se:" + query;
+    var message = "se:" + query;
     ws.send(message);
 }
+
+//メッセージを受信
+ws.onmessage = function(event){
+
+};
