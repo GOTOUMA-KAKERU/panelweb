@@ -23,9 +23,8 @@ wss.on('connection', (ws) => {
             //検索処理
             console.log(bodyofmessage);
 
-            const serchmessage = message.slice(3);
             //プロキシ処理
-            const proxyUrl = "https://duckduckgo.com/ac/?q=" + serchmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む
+            const proxyUrl = "https://duckduckgo.com/ac/?q=" + bodyofmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む
             console.log(proxyUrl);
 
             // fetchでHTTPリクエストを送信

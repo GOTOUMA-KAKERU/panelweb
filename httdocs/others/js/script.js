@@ -38,5 +38,5 @@ async function getSuggestions(query) {
 
 //メッセージを受信
 ws.onmessage = function(event){
-
+    
 };
