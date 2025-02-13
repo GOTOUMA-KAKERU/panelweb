@@ -181,7 +181,7 @@ header{
                 border-radius: 10px 10px 0 0;
                 box-shadow: none;
             }
-            #search_box:has(#search_box_input:focus) ~ #search_list{
+            #search_box:has(#search_box_input:focus) ~ #search_list,#search_list:hover{
                 display: block;
             }
     #username{

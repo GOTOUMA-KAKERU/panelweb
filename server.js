@@ -31,7 +31,7 @@ wss.on('connection', (ws) => {
             fetch(proxyUrl)
                 .then(response => response.json())  // レスポンスをJSONに変換
                 .then(data => {
-                    console.log('Received proxy data:', data);  // レスポンスデータの確認
+                    //console.log('Received proxy data:', data);  // レスポンスデータの確認
                     
                     // クライアントにプロキシ結果を返す
                     ws.send(JSON.stringify(data));
@@ -41,7 +41,7 @@ wss.on('connection', (ws) => {
                     ws.send(JSON.stringify({ error: 'Failed to fetch proxy data' }));  // エラーメッセージを送信
                 });
         }else{
-
+            console.error = "error";
         }
     });
 
@@ -50,7 +50,7 @@ wss.on('connection', (ws) => {
     });
 });
 
-const PORT = 3000;
+const PORT = 433;
 server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server is started at http://localhost:${PORT}`);
 });
