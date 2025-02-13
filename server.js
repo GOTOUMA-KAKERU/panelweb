@@ -32,6 +32,7 @@ wss.on('connection', (ws) => {
                 .then(response => response.json())  // レスポンスをJSONに変換
                 .then(data => {
                     console.log('Received proxy data:', data);  // レスポンスデータの確認
+                    
                     // クライアントにプロキシ結果を返す
                     ws.send(JSON.stringify(data));
                 })

@@ -30,7 +30,7 @@ sinput.addEventListener("input" , function(){
         console.log(sinput.value);
         getSuggestions(sinput.value);
 });
-//検索候補取得リクエストする
+//検索候補取得リクエストpする
 async function getSuggestions(query) {
     var message = "se:" + query;
     ws.send(message);
@@ -38,5 +38,12 @@ async function getSuggestions(query) {
 
 //メッセージを受信
 ws.onmessage = function(event){
-    
+    console.log(event.data);
+    const suggestions = event.data[1];  // サジェスト候補リスト
+    var list_nom = 1;
+
+    suggestions.forEach(suggestion => {
+        document.getElementById("s_" + list_nom)
+        list_nom++;
+    });
 };
