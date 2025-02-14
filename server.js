@@ -7,8 +7,13 @@ const app = express();
 const server = http.createServer(app); // HTTPサーバー作成
 const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに統合
 
-// public ディレクトリを静的ファイルとして公開
-app.use(express.static(path.join(__dirname, 'httdocs/')));
+// /appsで静的ファイルを公開 (http://localhost:3000/apps)
+app.use('/apps', express.static(path.join(__dirname, 'httdocs')));
+
+// ルートでmain/index.htmlを公開 (http://localhost:3000)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'main', 'index.html'));
+});
 
 // WebSocketの接続処理
 wss.on('connection', (ws) => {
@@ -25,7 +30,6 @@ wss.on('connection', (ws) => {
 
             //プロキシ処理
             const proxyUrl = "https://duckduckgo.com/ac/?q=" + bodyofmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む
-            console.log(proxyUrl);
 
             // fetchでHTTPリクエストを送信
             fetch(proxyUrl)
@@ -41,7 +45,7 @@ wss.on('connection', (ws) => {
                     ws.send(JSON.stringify({ error: 'Failed to fetch proxy data' }));  // エラーメッセージを送信
                 });
         }else{
-            console.error = "error";
+            console.error("errer");
         }
     });
 
