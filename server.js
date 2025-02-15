@@ -14,6 +14,9 @@ app.use('/apps', express.static(path.join(__dirname, 'httdocs')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'main', 'index.html'));
 });
+app.get('/top.webp', (req, res) => {
+    res.sendFile(path.join(__dirname, 'main', 'top.webp'));
+});
 
 // WebSocketの接続処理
 wss.on('connection', (ws) => {

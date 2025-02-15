@@ -99,10 +99,9 @@ header{
     height: 50px;
     display: grid;
     grid-template-columns: 180px 1fr 100px;
-    grid-template-rows: 50px;
     position: absolute;
     top: 0;
-    width: calc(100vw - 50px);
+    width: calc(100vw - 55px);
     z-index: 2;
     overflow-y: hidden;
 }
@@ -120,7 +119,7 @@ header{
             width: 100%;
             background-color: #fff;
             border-radius: 10px;
-            padding: 0 5px;
+            padding: 0;
             height: 34px;
             margin: auto;
             box-shadow: inset #bababa2c 0px 0px 10px;
@@ -132,7 +131,8 @@ header{
             background-color: #fff;
             border-radius: 0 0 10px 10px;
             padding: 0 5px 5px 5px;
-            width: 100%;
+            width: calc(100vw - 345px);
+            position: fixed;
         }
             #search_list ul{
                 padding: 0;
@@ -187,6 +187,7 @@ header{
             }
     #username{
         width: 90px;
+        margin: auto;
     }
         #username_btn{
             display: flex;
@@ -199,7 +200,7 @@ header{
             border-radius: 1em;
         }
         #username_btn:hover{
-            background-color: #5c513d;
+            background-color: #7a6c52;
         }
             #username_btn img{
                 height: 18px;
@@ -232,10 +233,10 @@ header{
                 height: 60px;
                 width: 60px;
                 padding: 5px;
+                border-radius: 10px;
             }
             .card:hover{
                 background-color: #fffdfa;
-                border-radius: 10px;
             }
                 .card a{
                     color: #000;
@@ -253,3 +254,7 @@ header{
                     text-align: center;
                     padding: 0;
                 }
+
+#dashboard{
+    display: grid;
+}
