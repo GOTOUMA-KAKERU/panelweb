@@ -61,3 +61,19 @@ const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Server is started at http://localhost:${PORT}`);
 });
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+console.log('終了はqと入力');
+
+rl.on('line', (input) => {
+    if (input.trim() === 'q') {
+        console.log('終了します。');
+        rl.close();
+        process.exit(0);
+    }
+});
