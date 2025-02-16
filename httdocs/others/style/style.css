@@ -257,4 +257,16 @@ header{
 
 #dashboard{
     display: grid;
+    margin-right: 5px;
+    height: calc(100vh - 170px);
 }
+    .board{
+        height: 76px;
+        width: 76px;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    .board:hover{
+        filter: brightness(0.95);
+    }

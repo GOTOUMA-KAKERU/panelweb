@@ -5,17 +5,28 @@ function loadfinish(){
       var selectedchild = selected.children;
       selectedchild[0].style.backgroundColor = "#7a6c52";
 
-      //dashboard本体のgridの幅と高さを決める
-      let width = window.innerWidth;
-      width = width -55;
-      var columuns = Math.floor(width / 70);
-      console.log(columuns);
-      const fr = "1fr ";
-      var columunscss = fr.repeat(columuns);
-      document.getElementById("dashboard").style.gridTemplateColumns = columunscss;
-      console.log(columunscss);
+      dashboard_grid();
 }
 
+window.addEventListener("resize", () => {
+    dashboard_grid();
+});
+
+function dashboard_grid(){
+      //dashboard本体のgridの幅と高さを決める
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      width = width -60;
+      height = height - 145;
+      var columuns = Math.floor(width / 80);
+      var rows = Math.floor(height / 80);
+      const fr = "1fr ";
+      columuns = fr.repeat(columuns);
+      rows = fr.repeat(rows);
+      document.getElementById("dashboard").style.gridTemplateColumns = columuns;
+      document.getElementById("dashboard").style.gridTemplateRows = rows;
+      console.log(rows);
+}
 
 //websocket関連
 const domain = window.location.hostname;
