@@ -10,13 +10,10 @@ function loadfinish(){
       width = width -55;
       var columuns = Math.floor(width / 70);
       console.log(columuns);
-      var i = 1;
-      var columunscss = "";
-      while(columuns <= i){
-        columunscss += columunscss + "1fr";
-        i++;
-      }
+      const fr = "1fr ";
+      var columunscss = fr.repeat(columuns);
       document.getElementById("dashboard").style.gridTemplateColumns = columunscss;
+      console.log(columunscss);
 }
 
 
