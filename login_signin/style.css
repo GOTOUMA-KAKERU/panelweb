@@ -1,0 +1,37 @@
+/*フォント*/
+@charset "utf-8";
+@font-face {
+    font-family: gokuhoso;
+    font-display: swap;
+    src: url("../apps/others/font/gokuhoso.ttf") format("TrueType");
+}
+
+html{
+    margin: 0;
+    background-color: #fef8e1;
+}
+
+body{
+    min-width: 320px;
+    width: 80vw;
+    margin: 30px auto;
+    border: 1px #5c513d solid;
+    box-shadow: #5c513d6f 0px 0px 10px;
+    border-radius: 30px;
+    font-family: 'gokuhoso',serif;
+}
+.logo{
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+}
+h1{
+    text-align: center;
+}
+form{
+    margin: 0 auto;
+    width: fit-content;
+}
+form input{
+    display: block;
+}

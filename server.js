@@ -9,6 +9,7 @@ const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに
 
 // /appsで静的ファイルを公開 (http://localhost:3000/apps)
 app.use('/apps', express.static(path.join(__dirname, 'httdocs')));
+app.use('/login', express.static(path.join(__dirname, 'login_signin')));
 
 // ルートでmain/index.htmlを公開 (http://localhost:3000)
 app.get('/', (req, res) => {
