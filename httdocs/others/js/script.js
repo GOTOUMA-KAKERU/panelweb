@@ -30,7 +30,7 @@ function dashboard_grid(){
 
 //websocket関連
 const domain = window.location.hostname;
-const ws = new WebSocket('wss://' + domain + "/proxy/3000/");  // サーバーのURLに接続
+const ws = new WebSocket('wss://' + domain);  // サーバーのURLに接続
 console.log(ws);
 
 const i_history = "../others/img/i_history.svg";
