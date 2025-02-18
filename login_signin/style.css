@@ -12,12 +12,16 @@ button, input, textarea {
 html{
     margin: 0;
     background-color: #fef8e1;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 body{
     min-width: 320px;
     width: 80vw;
-    margin: calc(50vh - 50px) auto;
+    margin: 0 auto;
     border-radius: 30px;
     background-color: #fff;
     padding: 30px 0;
@@ -33,6 +37,7 @@ body{
 }
 h1{
     text-align: center;
+    margin: 1em 0;
 }
 form{
     margin: 0 auto;
@@ -53,7 +58,7 @@ form{
     box-shadow: none;
 }
     #input{
-        margin: 50px 20px;
+        margin: 50px 20px 0.25em 20px;
         width: calc(100% - 40px - 1em);
         padding: 1em 0.5em;
         font-size: 1em;
@@ -64,8 +69,27 @@ form{
     #input:focus{
         outline-color: #d8c196;
     }
+    #forget_pass{
+        margin-left: calc(20px + 1em);
+        text-decoration: none;
+        color: #9e8c6b;
+    }
+    #forget_pass:hover{
+        background-color: #fafafa;
+    }
     .flat{
         display: flex;
+        margin-top: 50px;
+    }
+    .flat a{
+        margin-left: 20px;
+        border-radius: 3em;
+        padding: 1em;
+        text-decoration: none;
+        color: #9e8c6b;
+    }
+    .flat a:hover{
+        background-color: #fef8e1;
     }
     .submit{
         background-color: #9e8c6b;
@@ -74,4 +98,8 @@ form{
         border-radius: 3em;
         margin-left: auto;
         margin-right: 20px;
+        color: #fff;
+    }
+    .submit:hover{
+        background-color: #d8c196;
     }
