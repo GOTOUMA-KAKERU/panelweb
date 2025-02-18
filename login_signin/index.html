@@ -14,9 +14,17 @@
         <img class="logo" src="../apps/others/img/top.webp" alt="">
         <h1>ログイン</h1>
         <form action="">
-            <input type="text" placeholder="ユーザー名">
-            <input type="password" placeholder="パスワード">
-            <input type="submit" value="ログイン">
+            <div id="OAuths" class="flat">
+                <a href=""><img src="./login_icons/google.png" alt="googleでログイン"></a>
+                <a href=""><img src="./login_icons/x.jpg" alt="Xでログイン"></a>
+                <a href=""><img src="./login_icons/discord.jpg" alt="discord"></a>
+                <a href=""><img src="./login_icons/apple.png" alt="appleでログイン"></a>
+            </div>
+            <input id="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名">
+            <div class="flat">
+                <div><a href="">アカウントを作成する</a></div>
+                <input class="submit" type="submit" value="次へ">
+            </div>
         </form>
         <script src="./script.js"></script>
     </body>
