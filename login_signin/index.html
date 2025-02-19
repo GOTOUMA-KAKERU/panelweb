@@ -11,28 +11,27 @@
         <link rel="stylesheet" href="./style.css">
     </head>
 	<body>
-        <img class="logo" src="../apps/others/img/top.webp" alt="">
+        <a href="../"><img class="logo" src="../apps/others/img/top.webp" alt=""></a>
         <h1>ログイン</h1>
-        <form action="">
             <div id="OAuths">
-                <a href=""><img src="./login_icons/google.png" alt="googleでログイン"></a>
+                <a href=""><img src="./login_icons/google.jpg" alt="googleでログイン"></a>
                 <a href=""><img src="./login_icons/x.jpg" alt="Xでログイン"></a>
                 <a href=""><img src="./login_icons/discord.jpg" alt="discord"></a>
-                <a href=""><img src="./login_icons/apple.png" alt="appleでログイン"></a>
+                <a href=""><img src="./login_icons/apple.jpg" alt="appleでログイン"></a>
             </div>
             <input id="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
             <a id="forget_pass" href="">パスワードを忘れた</a>
             <div class="flat">
                 <a href="">アカウントを作成</a>
-                <button onclick="btnclick()" class="submit" id="submit">次へ</button>
+                <button onclick="btnclick()" id="submit">次へ</button>
             </div>
-        </form>
         <script>
             var clicked = false;
             var button = document.getElementById("submit");
             function btnclick(){
-                if(clicked){
-                    button.value = "aaa";
+                console.log("aaaaaa");
+                if(!clicked){
+                    button.textContent = "ログイン";
                     clicked = true;
                 }else{
 

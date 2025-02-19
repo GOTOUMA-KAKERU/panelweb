@@ -57,6 +57,7 @@ form{
 }
 #OAuths a:hover img{
     box-shadow: none;
+    opacity: 0.5;
 }
     #input{
         margin: 50px 20px 0.25em 20px;
@@ -92,7 +93,7 @@ form{
     .flat a:hover{
         background-color: #fef8e1;
     }
-    .submit{
+    #submit{
         background-color: #9e8c6b;
         border: none;
         padding: 1em 2em;
@@ -101,6 +102,6 @@ form{
         margin-right: 20px;
         color: #fff;
     }
-    .submit:hover{
+    #submit:hover{
         background-color: #d8c196;
     }
