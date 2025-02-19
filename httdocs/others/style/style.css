@@ -28,6 +28,7 @@ html{
     background-color: #ede9e4;
     font-family: "gokuhoso",serif;
     -webkit-tap-highlight-color: transparent;
+    font-weight: bolder;
 }
 body{
     margin: 0;
