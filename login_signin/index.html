@@ -20,7 +20,9 @@
                     <a href=""><img src="./login_icons/discord.jpg" alt="discord"></a>
                     <a href=""><img src="./login_icons/apple.jpg" alt="appleでログイン"></a>
                 </div>
-                <input id="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
+                <input id="input" class="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
+                <input id="password" class="input password" type="password" placeholder="パスワード">
+                <div class="checkbox" is="checkboxs"><input id="passview" type="checkbox"><label for="passview">パスワードを表示</label></div>
                 <a id="forget_pass" href="">パスワードを忘れた</a>
                 <div class="flat">
                     <a href="">アカウントを作成</a>
@@ -30,13 +32,27 @@
         <script>
             var clicked = false;
             var input = document.getElementById("input");
+            var password = document.getElementById("password");
             var button = document.getElementById("submit");
+            var checkbox = document.getElementById("checkboxs");
+            var forget = document.getElementById("forget_pass");
+
+            input.addEventListener("keydown", inputting);
+            password.addEventListener("keydown", inputting);
+
+            function inputting(e) {
+            if (e.key === "Enter") {
+                btnclick();
+            }  
+            return false;
+            }
             function btnclick(){
-                console.log("aaaaaa");
                 if(!clicked){
                     button.textContent = "ログイン";
-                    input.placeholder = "パスワード";
-                    input.type = "password";
+                    input.style.display = "none";
+                    checkbox.style.display = "flex";
+                    password.style.removeProperty("display"); // displayのスタイルを削除
+                    password.style.display = "block";
 
                     clicked = true;
                 }else{
