@@ -22,20 +22,23 @@
                 </div>
                 <input id="input" class="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
                 <input id="password" class="input password" type="password" placeholder="パスワード">
-                <div class="checkbox" is="checkboxs"><input id="passview" type="checkbox"><label for="passview">パスワードを表示</label></div>
+                <button id="passview" type="button" onclick="passviewfun()">パスワードを表示</button>
                 <a id="forget_pass" href="">パスワードを忘れた</a>
                 <div class="flat">
                     <a href="">アカウントを作成</a>
+                    <button type="button" onclick="btnback()" id="back">戻る</button>
                     <button type="button" onclick="btnclick()" id="submit">次へ</button>
                 </div>
             </form>
         <script>
             var clicked = false;
+            var passv = false;
             var input = document.getElementById("input");
             var password = document.getElementById("password");
             var button = document.getElementById("submit");
-            var checkbox = document.getElementById("checkboxs");
+            var checkbox = document.getElementById("passview");
             var forget = document.getElementById("forget_pass");
+            var back = document.getElementById("back");
 
             input.addEventListener("keydown", inputting);
             password.addEventListener("keydown", inputting);
@@ -47,16 +50,41 @@
             return false;
             }
             function btnclick(){
-                if(!clicked){
-                    button.textContent = "ログイン";
-                    input.style.display = "none";
-                    checkbox.style.display = "flex";
-                    password.style.removeProperty("display"); // displayのスタイルを削除
-                    password.style.display = "block";
+                if(input.value != ""){
+                    if(!clicked){
+                        button.textContent = "ログイン";
+                        input.style.display = "none";
+                        checkbox.style.display = "flex";
+                        password.style.display = "block";
+                        forget.style.display = "none";
+                        clicked = true;
+                        back.style.display = "block";
+                    }else{
+                        button.type = "submit";
+                    } 
+                }
+            }
+            function btnback(){
+                button.textContent = "次へ";
+                button.type = "button";
+                input.style.display = "block";
+                checkbox.style.display = "none";
+                password.style.display = "none";
+                forget.style.display = "block";
+                clicked = false;
+                back.style.display = "none";
+            }
 
-                    clicked = true;
+            function passviewfun(){
+                var checkboximg = window.getComputedStyle(checkbox, "::before");
+                if(passv){
+                    checkboximg.classList.add("checkeded");
+                    console.log("a");
+                    passv = false;
                 }else{
-                    button.type = "submit";
+                    console.log("b");
+                    checkboximg.classList.add("checkeded");
+                    passv = true;
                 }
             }
         </script>

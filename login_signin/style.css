@@ -61,7 +61,6 @@ form{
         width: calc(100% - 40px - 1em);
         padding: 1em 0.5em;
         font-size: 1em;
-        display: block;
         border: #9e8c6b solid 2px;
         border-radius: 0.25em;
     }
@@ -71,19 +70,14 @@ form{
     .password{
         display: none;
     }
-    .checkbox{
-        margin: 0.25em 20px 1em 20px;
-        display: none;
-        align-items: center;
-        height: 1.5em;
-    }
-    .checkbox input{
-        display: none;
-    }
-    .checkbox label{
+    #passview{
         color: #9e8c6b;
+        margin: 0 20px 1em 20px;
+        display: none;
+        background-color: #fff;
+        border: none;
     }
-    .checkbox label::before{
+    #passview::before{
         margin-top: 0.25em;
         content: "";
         background-image: url(./check.svg);
@@ -95,7 +89,7 @@ form{
         height: 1.25em;
         display: inline-block;
     }
-    .checkbox input:checked ~ label::before{
+    .checkeded{
         background-image: url(./checked.svg);
     }
     #forget_pass{
@@ -111,21 +105,30 @@ form{
         margin-top: 50px;
     }
     .flat a{
+        margin-right: auto;
+    }
+    .flat a,#back{
+        background-color: #fff;
+        border: none;
         margin-left: 20px;
         border-radius: 3em;
         padding: 1em;
         text-decoration: none;
         color: #9e8c6b;
     }
-    .flat a:hover{
+    .flat a:hover,#back:hover{
         background-color: #fef8e1;
+    }
+    #back{
+        padding: 1em 2em;
+        margin-right: 10px;
+        display: none;
     }
     #submit{
         background-color: #9e8c6b;
         border: none;
         padding: 1em 2em;
         border-radius: 3em;
-        margin-left: auto;
         margin-right: 20px;
         color: #fff;
     }
