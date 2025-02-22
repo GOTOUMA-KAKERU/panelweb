@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
         <title>ログイン - PanelWeb</title>
         <link rel="icon" href="./others/img/PanelWeb.ico">
-        <meta name=”description“ content=“PanelWebは自宅で運用できるnode.jsベースのダッシュボードシステムです。“ />
+
         <!--css-->
         <link rel="stylesheet" href="./style.css">
     </head>
@@ -76,14 +76,15 @@
             }
 
             function passviewfun(){
-                var checkboximg = window.getComputedStyle(checkbox, "::before");
                 if(passv){
-                    checkboximg.classList.add("checkeded");
+                    checkbox.classList.add("checkeded");
                     console.log("a");
+                    password.type = "text";
                     passv = false;
                 }else{
                     console.log("b");
-                    checkboximg.classList.add("checkeded");
+                    checkbox.classList.remove("checkeded");
+                    password.type = "password";
                     passv = true;
                 }
             }

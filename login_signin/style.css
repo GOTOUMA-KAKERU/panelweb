@@ -89,7 +89,7 @@ form{
         height: 1.25em;
         display: inline-block;
     }
-    .checkeded{
+    .checkeded::before{
         background-image: url(./checked.svg);
     }
     #forget_pass{
