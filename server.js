@@ -2,13 +2,33 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const WebSocket = require('ws');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const server = http.createServer(app); // HTTPサーバー作成
 const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに統合
 
+// 認証ミドルウェア
+function authenticate(req, res, next) {
+    const token = req.cookies.auth_token;
+
+    if (!token) {
+        return res.redirect('/login'); // クッキーがない場合はログインページへ
+    }
+
+    try {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        req.user = decoded; // ユーザー情報をリクエストにセット
+        next(); // 認証OKなら次へ
+    } catch (err) {
+        res.clearCookie('auth_token'); // トークンが無効なら削除
+        return res.redirect('/login'); // 再ログインを促す
+    }
+}
+
 // /appsで静的ファイルを公開 (http://localhost:3000/apps)
-app.use('/apps', express.static(path.join(__dirname, 'httdocs')));
+app.use('/@dash', authenticate, express.static(path.join(__dirname, 'htdocs')));
 app.use('/login', express.static(path.join(__dirname, 'login_signin')));
 
 // ルートでmain/index.htmlを公開 (http://localhost:3000)

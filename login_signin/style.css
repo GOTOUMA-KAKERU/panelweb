@@ -6,7 +6,7 @@
     src: url("../apps/others/font/gokuhoso.ttf") format("TrueType");
 }
 button, input, textarea {
-    font-family : inherit;
+    font-family : "gokuhoso" ,serif;
     font-weight: bold;
 }
 
@@ -27,6 +27,7 @@ body{
     background-color: #fff;
     padding: 30px 0;
     font-family: 'gokuhoso',serif;
+    font-weight: bold;
 }
 .logo{
     height: 50px;
@@ -89,7 +90,7 @@ form{
         height: 1.25em;
         display: inline-block;
     }
-    .checkeded::before{
+    #passview.checkeded::before{
         background-image: url(./checked.svg);
     }
     #forget_pass{
