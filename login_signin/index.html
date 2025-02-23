@@ -13,15 +13,15 @@
 	<body>
             <a href="../"><img class="logo" src="../apps/others/img/top.webp" alt=""></a>
             <h1>ログイン</h1>
-            <form action="">
+            <form action="/login/auth" method="post">
                 <div id="OAuths">
                     <a href=""><img src="./login_icons/google.jpg" alt="googleでログイン"></a>
                     <a href=""><img src="./login_icons/x.jpg" alt="Xでログイン"></a>
                     <a href=""><img src="./login_icons/discord.jpg" alt="discord"></a>
                     <a href=""><img src="./login_icons/apple.jpg" alt="appleでログイン"></a>
                 </div>
-                <input id="input" class="input" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
-                <input id="password" class="input password" type="password" placeholder="パスワード">
+                <input id="input" class="input" name="user" type="text" autofocus autocomplete="off" placeholder="ユーザー名またはメールアドレス">
+                <input id="password" class="input password" name="pass" type="password" placeholder="パスワード">
                 <button id="passview" type="button" onclick="passviewfun()">パスワードを表示</button>
                 <a id="forget_pass" href="">パスワードを忘れた</a>
                 <div class="flat">

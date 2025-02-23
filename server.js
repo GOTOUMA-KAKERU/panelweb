@@ -4,10 +4,16 @@ const http = require('http');
 const WebSocket = require('ws');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser'); // 追加
 
 const app = express();
 const server = http.createServer(app); // HTTPサーバー作成
 const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに統合
+app.use(cookieParser());  // これでcookie-parserが有効になります
+
+// ミドルウェアの設定
+app.use(express.json()); // JSONリクエストボディをパースする
+app.use(cookieParser()); // クッキーをパースする
 
 // 認証ミドルウェア
 function authenticate(req, res, next) {
@@ -29,7 +35,6 @@ function authenticate(req, res, next) {
 
 // /appsで静的ファイルを公開 (http://localhost:3000/apps)
 app.use('/@dash', authenticate, express.static(path.join(__dirname, 'htdocs')));
-app.use('/login', express.static(path.join(__dirname, 'login_signin')));
 
 // ルートでmain/index.htmlを公開 (http://localhost:3000)
 app.get('/', (req, res) => {
@@ -38,6 +43,26 @@ app.get('/', (req, res) => {
 app.get('/top.webp', (req, res) => {
     res.sendFile(path.join(__dirname, 'main', 'top.webp'));
 });
+
+//認証の処理
+const SECRET_KEY = '241116kwt'; // 秘密鍵を設定
+app.use('/login', express.static(path.join(__dirname, 'login_signin')));
+app.post('/login/auth', (req, res) => {
+    const { user, pass } = req.body;
+    console.log(user);
+    console.log(pass);
+
+    // ユーザー認証処理（仮）
+    if (user === 'test' && pass === '1234') {
+        const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1d' });
+        res.cookie('auth_token', token, { httpOnly: true, secure: true }); // クッキーに保存
+        return res.json({ message: 'Login successful' });
+    } else {
+        return res.status(401).json({ message: 'Invalid credentials' });
+    }
+});
+
+
 
 // WebSocketの接続処理
 wss.on('connection', (ws) => {
@@ -78,11 +103,15 @@ wss.on('connection', (ws) => {
     });
 });
 
+
+//サーバーを起動
 const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Server is started at http://localhost:${PORT}`);
 });
 
+
+//console上での終了操作
 const readline = require('readline');
 
 const rl = readline.createInterface({
