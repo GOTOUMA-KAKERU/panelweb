@@ -12,8 +12,8 @@ const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに
 app.use(cookieParser());  // これでcookie-parserが有効になります
 
 // ミドルウェアの設定
-app.use(express.json()); // JSONリクエストボディをパースする
-app.use(cookieParser()); // クッキーをパースする
+app.use(express.urlencoded({ extended: true })); // 追加
+
 
 // 認証ミドルウェア
 function authenticate(req, res, next) {
@@ -53,12 +53,13 @@ app.post('/login/auth', (req, res) => {
     console.log(pass);
 
     // ユーザー認証処理（仮）
-    if (user === 'test' && pass === '1234') {
+    if (user == 'test' && pass == '1234') {
         const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1d' });
         res.cookie('auth_token', token, { httpOnly: true, secure: true }); // クッキーに保存
         return res.json({ message: 'Login successful' });
     } else {
-        return res.status(401).json({ message: 'Invalid credentials' });
+        console.log(user);
+        return resredirect('/');
     }
 });
 
