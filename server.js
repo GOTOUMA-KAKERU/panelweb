@@ -1,15 +1,18 @@
 const express = require('express');
 const path = require('path');
-const http = require('http');
-const WebSocket = require('ws');
-const jwt = require('jsonwebtoken');
+const http = require('http');//httpsサーバー
+const WebSocket = require('ws');//websocket
+const jwt = require('jsonwebtoken');//JWTキーを使ったログイン
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser'); // 追加
+const bodyParser = require('body-parser');
+const crypto = require('crypto');//乱数発生用
+
 
 const app = express();
 const server = http.createServer(app); // HTTPサーバー作成
 const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに統合
 app.use(cookieParser());  // これでcookie-parserが有効になります
+const sessionStore = new Map();//ログイン中セッションの管理
 
 // ミドルウェアの設定
 app.use(express.urlencoded({ extended: true })); // 追加
@@ -17,22 +20,38 @@ app.use(express.urlencoded({ extended: true })); // 追加
 // 認証ミドルウェア
 function authenticate(req, res, next) {
     const token = req.cookies.auth_token;
+    const sessionId = req.cookies.session_id;
     if (!token) {
         return res.redirect('/login'); // クッキーがない場合はログインページへ
     }
-
-    try {
-        const decoded = jwt.verify(token, SECRET_KEY);
-        req.user = decoded; // ユーザー情報をリクエストにセット
+    if(sessionId || sessionStore.has(sessionId)){
+        req.user = sessionStore.get(sessionId);
+        console.log("セッションを使ったログインがありました");
         next(); // 認証OKなら次へ
-    } catch (err) {
-        res.clearCookie('auth_token'); // トークンが無効なら削除
-        return res.redirect('/login'); // 再ログインを促す
+    }else{
+        try {
+            const decoded = jwt.verify(token, SECRET_KEY);
+            req.user = decoded; // ユーザー情報をリクエストにセット
+            console.log("JWTを使ったログインがありました");
+
+            // セッションIDを作成（例：ランダムな文字列やUUID）
+            const sessionId = crypto.randomUUID();
+            // セッション情報をMapに格納
+            sessionStore.set(sessionId, { user: 'test'});
+            // セッションIDをクッキーとしてクライアントに送信
+            res.cookie('session_id', sessionId, { httpOnly: true, secure: true });
+            
+            next(); // 認証OKなら次へ
+        } catch (err) {
+            res.clearCookie('auth_token'); // トークンが無効なら削除
+            return res.redirect('/@dash'); // 再ログインを促す
+        }
     }
 }
 
 // /appsで静的ファイルを公開 (http://localhost:3000/apps)
 app.use('/@dash', authenticate, express.static(path.join(__dirname, 'htdocs')));
+app.use('/others', authenticate, express.static(path.join(__dirname, 'others')));
 
 // ルートでmain/index.htmlを公開 (http://localhost:3000)
 app.get('/', (req, res) => {
@@ -55,8 +74,15 @@ app.post('/login/auth', (req, res) => {
         const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1d' });
         res.clearCookie('auth_token'); // cookieを削除
         res.cookie('auth_token', token, { httpOnly: true, secure: true }); // クッキーに保存
-        console.log("aaa");
-        return res.redirect(req.headers.referer || '/@dash'); 
+
+                // セッションIDを作成（例：ランダムな文字列やUUID）
+                const sessionId = crypto.randomUUID();
+                // セッション情報をMapに格納
+                sessionStore.set(sessionId, { user: 'test'});
+                // セッションIDをクッキーとしてクライアントに送信
+                res.cookie('session_id', sessionId, { httpOnly: true, secure: true });
+
+        return res.redirect('/@dash'); 
     } else {
         console.log(user);
         return res.redirect('/login');
