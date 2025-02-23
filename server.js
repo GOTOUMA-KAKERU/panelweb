@@ -14,11 +14,9 @@ app.use(cookieParser());  // これでcookie-parserが有効になります
 // ミドルウェアの設定
 app.use(express.urlencoded({ extended: true })); // 追加
 
-
 // 認証ミドルウェア
 function authenticate(req, res, next) {
     const token = req.cookies.auth_token;
-
     if (!token) {
         return res.redirect('/login'); // クッキーがない場合はログインページへ
     }
@@ -46,7 +44,7 @@ app.get('/top.webp', (req, res) => {
 
 //認証の処理
 const SECRET_KEY = '241116kwt'; // 秘密鍵を設定
-app.use('/login', express.static(path.join(__dirname, 'login_signin')));
+app.use('/login', express.static(path.join(__dirname, 'login')));
 app.post('/login/auth', (req, res) => {
     const { user, pass } = req.body;
     console.log(user);
@@ -55,11 +53,13 @@ app.post('/login/auth', (req, res) => {
     // ユーザー認証処理（仮）
     if (user == 'test' && pass == '1234') {
         const token = jwt.sign({ user }, SECRET_KEY, { expiresIn: '1d' });
+        res.clearCookie('auth_token'); // cookieを削除
         res.cookie('auth_token', token, { httpOnly: true, secure: true }); // クッキーに保存
-        return res.json({ message: 'Login successful' });
+        console.log("aaa");
+        return res.redirect(req.headers.referer || '/@dash'); 
     } else {
         console.log(user);
-        return resredirect('/');
+        return res.redirect('/login');
     }
 });
 

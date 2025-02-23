@@ -3,7 +3,7 @@
 @font-face {
     font-family: gokuhoso;
     font-display: swap;
-    src: url("../apps/others/font/gokuhoso.ttf") format("TrueType");
+    src: url("../@dash/others/font/gokuhoso.ttf") format("TrueType");
 }
 button, input, textarea {
     font-family : "gokuhoso" ,serif;
