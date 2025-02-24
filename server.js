@@ -61,7 +61,7 @@ app.get('/top.webp', (req, res) => {
     res.sendFile(path.join(__dirname, 'main', 'top.webp'));
 });
 
-//認証の処理
+//ログイン
 const SECRET_KEY = '241116kwt'; // 秘密鍵を設定
 app.use('/login', express.static(path.join(__dirname, 'login')));
 app.post('/login/auth', (req, res) => {
@@ -88,6 +88,9 @@ app.post('/login/auth', (req, res) => {
         return res.redirect('/login');
     }
 });
+
+//ログアウト
+
 
 
 

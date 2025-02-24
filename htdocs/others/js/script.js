@@ -1,9 +1,17 @@
 //ページロード時に発火
 document.addEventListener('DOMContentLoaded', loadfinish);
 function loadfinish(){
-      var selected = document.getElementById("m_u_server");
-      var selectedchild = selected.children;
-      selectedchild[0].style.backgroundColor = "#7a6c52";
+    dash_load("home");
+}
+
+//ダッシュボードロード
+function dash_load(page){
+    document.getElementById("main_menu").querySelectorAll("img").forEach(img => {
+        img.style.background = "none";
+    });
+    var selected = document.getElementById("m_u_" + page);
+    var selectedchild = selected.children;
+    selectedchild[0].style.backgroundColor = "#888";
 }
 
 //websocket関連
