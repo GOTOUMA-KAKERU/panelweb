@@ -163,7 +163,7 @@ header{
             background-color: #fff;
             border-radius: 0 0 10px 10px;
             padding: 5px 5px 5px 5px;
-            width: calc(100vw - 345px);
+            width: calc(100vw - 265px);
             position: fixed;
             box-shadow: #bababa2c 0px 0px 10px;
         }
@@ -308,4 +308,5 @@ header{
 }
 .t_link p{
     margin: 0;
+    height: 20px;
 }
