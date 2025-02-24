@@ -51,15 +51,9 @@ function authenticate(req, res, next) {
 
 // /appsで静的ファイルを公開 (http://localhost:3000/apps)
 app.use('/@dash', authenticate, express.static(path.join(__dirname, 'htdocs')));
-app.use('/others', authenticate, express.static(path.join(__dirname, 'others')));
+app.use('/others', express.static(path.join(__dirname, 'others')));
 
-// ルートでmain/index.htmlを公開 (http://localhost:3000)
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'main', 'index.html'));
-});
-app.get('/top.webp', (req, res) => {
-    res.sendFile(path.join(__dirname, 'main', 'top.webp'));
-});
+app.use('/',express.static(path.join(__dirname, 'main')));
 
 //ログイン
 const SECRET_KEY = '241116kwt'; // 秘密鍵を設定
@@ -91,8 +85,11 @@ app.post('/login/auth', (req, res) => {
 
 //ログアウト
 
-
-
+app.get('/logout/auth', (req, res) => {
+    res.clearCookie("auth_token");
+    res.clearCookie("session_id");
+    res.redirect('/login');
+});
 
 // WebSocketの接続処理
 wss.on('connection', (ws) => {
