@@ -271,20 +271,25 @@ header{
             color: #000;
         }
         #user_manu ul li a img{
-            height: 20px;
-            margin: calc(0.5em - 10px) 5px calc(0.5em - 10px) 0;
+            height: 0.9em;
+            vertical-align: middle;
+            margin-right: 0.2em;
         }
         .red{
             color: #e00 !important;
         }
-        .money{
-            background: linear-gradient(90deg, #06f9f1, #4a0058); 
+        .i_money{
+            background: linear-gradient(90deg, #06f9f1, #4a0058);
+        }
+        .i_store{
+            background: linear-gradient(90deg, #ffaaaa, #2a06f9);
+        }
+        .font_colorful{
             background-clip: border-box;
             -moz-background-clip: text;
             -moz-text-fill-color: transparent;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-
         }
 
 #dashboard{

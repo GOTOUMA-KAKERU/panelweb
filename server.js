@@ -91,42 +91,62 @@ app.get('/logout/auth', (req, res) => {
 });
 
 // WebSocketの接続処理
-wss.on('connection', (ws) => {
-    console.log('WebSocket connected');
+wss.on('connection', (ws, req) => {
+    try{
+            
+        // HTTPリクエストからCookieを取得
+        const cookies = req.headers.cookie;
+        const sessionId = cookies && cookies.split(';').find(cookie => cookie.trim().startsWith('session_id='))
+        ? cookies.split(';').find(cookie => cookie.trim().startsWith('session_id=')).split('=')[1]
+        : null;
+        
+        console.log('WebSocket connected');
 
-    ws.on('message', (message) => {
-        const messageutf8 = message.toString("utf-8");
-        var typeofmessage = messageutf8.slice(0,3);
-        const bodyofmessage = messageutf8.slice(3);
+        ws.on('message', (message) => {
+            const messageutf8 = message.toString("utf-8");
+            var typeofmessage = messageutf8.slice(0,3);
+            const bodyofmessage = messageutf8.slice(3);
 
-        if(typeofmessage == "se:"){
-            //検索処理
-            console.log(bodyofmessage);
+            if(typeofmessage == "se:"){
+                //検索処理
+                console.log(bodyofmessage);
 
-            //プロキシ処理
-            const proxyUrl = "https://duckduckgo.com/ac/?q=" + bodyofmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む
+                //プロキシ処理
+                const proxyUrl = "https://duckduckgo.com/ac/?q=" + bodyofmessage + "&type=list";  // 実際のクエリやパラメータを埋め込む
 
-            // fetchでHTTPリクエストを送信
-            fetch(proxyUrl)
-                .then(response => response.json())  // レスポンスをJSONに変換
-                .then(data => {
-                    //console.log('Received proxy data:', data);  // レスポンスデータの確認
-                    
-                    // クライアントにプロキシ結果を返す
-                    ws.send(JSON.stringify(data));
-                })
-                .catch(error => {
-                    console.error('Error during proxy fetch:', error);
-                    ws.send(JSON.stringify({ error: 'Failed to fetch proxy data' }));  // エラーメッセージを送信
-                });
-        }else{
-            console.error("errer");
-        }
-    });
+                // fetchでHTTPリクエストを送信
+                fetch(proxyUrl)
+                    .then(response => response.json())  // レスポンスをJSONに変換
+                    .then(data => {
+                        //console.log('Received proxy data:', data);  // レスポンスデータの確認
+                        
+                        // クライアントにプロキシ結果を返す
+                        ws.send(JSON.stringify(data));
+                    })
+                    .catch(error => {
+                        console.error('Error during proxy fetch:', error);
+                        ws.send(JSON.stringify({ error: 'Failed to fetch proxy data' }));  // エラーメッセージを送信
+                    });
+            }else{
+                console.error("errer");
+            }
+        });
 
-    ws.on('close', () => {
-        console.log('WebSocket disconnected');
-    });
+        ws.on('close', () => {
+            if(sessionStore.has(sessionId)){
+                if (sessionStore.delete(sessionId)) {
+                    console.log(`🗑️ [${sessionId}] セッション削除成功`);
+                } else {
+                    console.log(`⚠️ [${sessionId}] セッション削除失敗`);
+                }
+            }else{
+                console.log("セッションが見つかりません");
+            }
+            console.log('WebSocket disconnected');
+        });
+    }catch{
+        console.log("wsでエラーが...");
+    }
 });
 
 

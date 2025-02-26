@@ -12,6 +12,7 @@ function dash_load(page){
     var selected = document.getElementById("m_u_" + page);
     var selectedchild = selected.children;
     selectedchild[0].style.backgroundColor = "#888";
+
 }
 
 //websocket関連
@@ -82,6 +83,12 @@ async function getSuggestions(query) {
         list_nom++;
         }
     }
+}
+
+//ダッシュボードリクエストする
+async function getdashboard() {
+    var message = "ds:get";
+    ws.send(message);
 }
 
 //メッセージを受信
