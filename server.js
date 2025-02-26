@@ -6,16 +6,15 @@ const jwt = require('jsonwebtoken');//JWTキーを使ったログイン
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');//乱数発生用
-
+const { Client } = require('pg');
 
 const app = express();
 const server = http.createServer(app); // HTTPサーバー作成
 const wss = new WebSocket.Server({ server }); // WebSocketをHTTPサーバーに統合
 app.use(cookieParser());  // これでcookie-parserが有効になります
 const sessionStore = new Map();//ログイン中セッションの管理
-
 // ミドルウェアの設定
-app.use(express.urlencoded({ extended: true })); // 追加
+app.use(express.urlencoded({ extended: true }));
 
 // 認証ミドルウェア
 function authenticate(req, res, next) {
@@ -49,7 +48,7 @@ function authenticate(req, res, next) {
     }
 }
 
-// /appsで静的ファイルを公開 (http://localhost:3000/apps)
+// /静的ファイルを公開 (http://localhost:3000/)
 app.use('/@dash', authenticate, express.static(path.join(__dirname, 'htdocs')));
 app.use('/others', express.static(path.join(__dirname, 'others')));
 

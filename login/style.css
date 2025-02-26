@@ -3,11 +3,10 @@
 @font-face {
     font-family: gokuhoso;
     font-display: swap;
-    src: url("../@dash/others/font/gokuhoso.ttf") format("TrueType");
+    src: url("../others/fonts/NotoSansJP-VariableFont_wght.woff2") format("TrueType");
 }
 button, input, textarea {
-    font-family : "gokuhoso" ,serif;
-    font-weight: bold;
+    font-family : "gokuhoso" ,sans-serif;
 }
 
 html{

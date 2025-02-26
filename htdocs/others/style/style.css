@@ -1,11 +1,6 @@
 /*#fef8e1 #5c513d*/
 /*フォント*/
 @charset "utf-8";
-@font-face {
-    font-family: gokuhoso;
-    font-display: swap;
-    src: url("../font/gokuhoso.ttf") format("TrueType");
-}
 
 /*keyframeたち*/
 @keyframes main_menu_in {
@@ -26,9 +21,8 @@ button, input, textarea {
 html{
     margin: 0 0 0 55px;
     background-color: #fff;
-    font-family: "gokuhoso",serif;
+    font-family: sans-serif;
     -webkit-tap-highlight-color: transparent;
-    font-weight: bolder;
 }
 body{
     margin: 0;
@@ -220,30 +214,29 @@ header{
                 display: block;
             }
     #username{
-        width: 90px;
         margin: auto;
     }
         #username_btn{
             display: flex;
             background: none;
             border: none;
-            margin: 6px 2px;
-            padding: 2px 6px;
+            margin: 6px;
+            padding: 2px;
             cursor: pointer;
             height: 34px;
-            border-radius: 1em;
+            border-radius: 10px;
+        }
+        #username_btn img{
+            border-radius: 10px;
+        }
+        .user_down{
+            height: 20px;
+            width: 20px;
+            margin: 7px 2px;
         }
         #username_btn:hover{
-            background-color: #aaa;
+            background-color: #ddd;
         }
-            #username_btn img{
-                height: 18px;
-                margin: auto 0;
-            }
-            #username_btn p{
-                font-size: 18px;
-                margin: auto 0;
-            }
         #user_manu{
             top: 50px;
             right: 10px;
@@ -253,23 +246,45 @@ header{
             box-shadow: #eee 0px 0px 10px;
             border-radius: 10px;
         }
+        #username:has(:focus-within) #user_manu , #username:hover #user_manu{
+            display: block;
+        }
+        #username:has(:focus-within) #username_btn, #username:hover #username_btn{
+            background-color: #ddd;
+        }
+        
         #user_manu ul{
             padding: 20px;
             margin: 0;
             list-style: none;
         }
         #user_manu ul li{
-            margin: 0.5em;
+            padding: 0.25em 0.5em;
+            border-radius: 0.25em;
+        }
+        #user_manu ul li:hover{
+            background-color: #ddd;
         }
         #user_manu ul li a{
+            display: block;
             text-decoration: none;
             color: #000;
+        }
+        #user_manu ul li a img{
+            height: 20px;
+            margin: calc(0.5em - 10px) 5px calc(0.5em - 10px) 0;
         }
         .red{
             color: #e00 !important;
         }
-        #username:hover #user_manu{
-            display: block;
+        .money{
+            background: linear-gradient(90deg, #06f9f1, #4a0058); 
+            background-clip: border-box;
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
         }
 
 #dashboard{
