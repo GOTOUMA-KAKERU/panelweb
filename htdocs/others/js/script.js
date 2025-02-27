@@ -228,3 +228,27 @@ function dash_edit(){
         e.target.style.opacity = "1";
         });
 }
+
+function dash_plus(){
+    const dashboard = document.getElementById("dashboard");
+    dashboard.innerHTML = `
+        
+        <form action="" method="POST">
+            <input type="text" placeholder="リンクURL">
+            <div class="favicons">
+                <label>
+                    <input type="radio" name="favicons" value="1" hidden>
+                    <img src="option1.png" alt="Option 1">
+                </label>
+                <label>
+                    <input type="radio" name="favicons" value="2" hidden>
+                    <img src="option2.png" alt="Option 2">
+                </label>
+                <label>
+                    <input type="radio" name="favicons" value="3" hidden>
+                    <img src="option2.png" alt="Option 2">
+                </label>
+            </div>
+        </form>
+        `;
+}

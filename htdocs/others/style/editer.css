@@ -15,7 +15,7 @@
     cursor: grab;
 }
 #edit_page ul li{
-    position: relative;  /* li自体の位置を調整しやすくする */
+    position: relative;
     border-radius: 0.25em;
     padding: 0.5em 0 0.5em 1.5em;
 }
@@ -38,9 +38,9 @@
     background: none;
     border: none;
     margin: 0;
-    padding: 0.1em;
-    height: 1.7em;
-    width: 1.7em;
+    padding: 0.2em;
+    height: 1.9em;
+    width: 1.9em;
     border-radius: 50%;
     position: absolute;
     right: 0;
