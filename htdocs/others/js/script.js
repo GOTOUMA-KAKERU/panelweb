@@ -179,19 +179,29 @@ function romajiToHiragana(str) {
 function dash_edit(){
     const dashboard = document.getElementById("dashboard");
     dashboard.innerHTML = `
+        <link rel="stylesheet" href="./others/style/editer.css">
         <div id="edit_page">
-            <ul id="edit_page_list">
-                <li draggable="true">aaa</li>
-                <li draggable="true">aaasfaa</li>
-                <li draggable="true">aaa</li>
-                <li draggable="true">aadfaa</li>
-                <li draggable="true">aaasdaa</li>
-                <li draggable="true">asssdaa</li>
+            <ul id="edit_page_list_page">
+                <li draggable="true">aaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+                <li draggable="true">aaasfaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+                <li draggable="true">aaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+                <li draggable="true">aadfaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+                <li draggable="true">aaasdaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+                <li draggable="true">asssdaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
+            </ul>
+            <ul id="edit_page_list_add">
+                <li>dftabc</li>
+                <li>sdaabc</li>
+                <li>adaabc</li>
+                <li>awdbc</li>
+                <li>aabc</li>
+                <li>abcd</li>
+                <li>absc</li>
             </ul>
         </div>
         `;
         
-        const list = document.getElementById("edit_page_list");
+        const list = document.getElementById("edit_page_list_page");
         console.log(list);
         let draggedItem = null;
 

@@ -1,0 +1,66 @@
+#edit_page{
+    display: flex;
+}
+#edit_page ul{
+    width: calc(50% - 15px);
+    height: fit-content;
+    margin: 10px;
+    box-shadow: inset #eee 0px 0px 15px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+}
+#edit_page_list_page{
+    cursor: grab;
+}
+#edit_page ul li{
+    position: relative;  /* li自体の位置を調整しやすくする */
+    border-radius: 0.25em;
+    padding: 0.5em 0 0.5em 1.5em;
+}
+#edit_page_list_page li:hover{
+    background-color: #eee;
+}
+#edit_page_list_page li::before{
+    content: "";
+    background-image: url(../icons/i_drag.svg);
+    background-size: contain;  /* アイコン画像を要素内に収める */
+    background-repeat: no-repeat;  /* 画像を繰り返さない */
+    position: absolute;
+    left: 0;  /* アイコンをliの左端に配置 */
+    top: 50%;
+    transform: translateY(-50%);  /* アイコンを中央に配置 */
+    width: 1em;  /* アイコンのサイズ調整 */
+    height: 1em;  /* アイコンのサイズ調整 */
+}
+#edit_page_list_page li button{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0.1em;
+    height: 1.7em;
+    width: 1.7em;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+}
+#edit_page_list_page li button:hover{
+    background-color: #ddd;
+}
+#edit_page_list_page li button img{
+    height: 1.5em;
+    width: 1.5em;
+}
+#edit_page_list_add li::before{
+    content: "";
+    background-image: url(../icons/i_add.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+    height: 1em;
+}
