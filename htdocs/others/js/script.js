@@ -180,6 +180,41 @@ function dash_edit(){
     const dashboard = document.getElementById("dashboard");
     dashboard.innerHTML = `
         <div id="edit_page">
+            <ul id="edit_page_list">
+                <li draggable="true">aaa</li>
+                <li draggable="true">aaasfaa</li>
+                <li draggable="true">aaa</li>
+                <li draggable="true">aadfaa</li>
+                <li draggable="true">aaasdaa</li>
+                <li draggable="true">asssdaa</li>
+            </ul>
         </div>
         `;
+        
+        const list = document.getElementById("edit_page_list");
+        console.log(list);
+        let draggedItem = null;
+
+        list.addEventListener("dragstart", (e) => {
+        draggedItem = e.target;
+        e.target.style.opacity = "0.5";
+        });
+
+        list.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const target = e.target;
+        if (target.tagName === "LI" && target !== draggedItem) {
+            const bounding = target.getBoundingClientRect();
+            const offset = bounding.y + bounding.height / 2;
+            if (e.clientY < offset) {
+            target.before(draggedItem);
+            } else {
+            target.after(draggedItem);
+            }
+        }
+        });
+
+        list.addEventListener("dragend", (e) => {
+        e.target.style.opacity = "1";
+        });
 }
