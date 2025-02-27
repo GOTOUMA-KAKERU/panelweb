@@ -174,3 +174,12 @@ function romajiToHiragana(str) {
 
     return hiraganaStr;
 }
+
+
+function dash_edit(){
+    const dashboard = document.getElementById("dashboard");
+    dashboard.innerHTML = `
+        <div id="edit_page">
+        </div>
+        `;
+}

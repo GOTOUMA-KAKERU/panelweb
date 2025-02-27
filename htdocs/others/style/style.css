@@ -319,8 +319,9 @@ header{
     text-align: center;
 }
 .t_link img{
-    height: 50px;
-    width: 50px;
+    margin-top: 8px;
+    height: 40px;
+    width: 40px;
 }
 .t_link a{
     text-decoration: none;
@@ -328,5 +329,6 @@ header{
 }
 .t_link p{
     margin: 0;
-    height: 20px;
+    background-color: #ea8c2d;
+    border-radius: 0 0 10px 10px;
 }
