@@ -13,3 +13,13 @@
     width: 90%;
     display: flex;
 }
+#add_links div label{
+    height: 30%;
+    width: 30%;
+    margin: 0 auto;
+}
+
+#add_links div label img{
+    height: 100%;
+    width: 100%;
+}
