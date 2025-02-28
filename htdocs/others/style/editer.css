@@ -2,7 +2,7 @@
     display: flex;
 }
 #edit_page ul{
-    width: calc(50% - 15px);
+    width: 100%;
     height: fit-content;
     margin: 10px;
     box-shadow: inset #eee 0px 0px 15px;
@@ -51,16 +51,4 @@
 #edit_page_list_page li button img{
     height: 1.5em;
     width: 1.5em;
-}
-#edit_page_list_add li::before{
-    content: "";
-    background-image: url(../icons/i_add.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1em;
-    height: 1em;
 }

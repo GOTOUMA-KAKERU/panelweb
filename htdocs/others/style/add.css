@@ -1,0 +1,15 @@
+#add_links{
+    width: 100%;
+}
+
+#add_links_url{
+    width: 90%;
+    margin: 5%;
+    border: none;
+}
+
+#add_links div{
+    margin: 0 5%;
+    width: 90%;
+    display: flex;
+}

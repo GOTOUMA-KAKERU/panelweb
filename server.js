@@ -23,7 +23,7 @@ function authenticate(req, res, next) {
     if (!token) {
         return res.redirect('/login'); // クッキーがない場合はログインページへ
     }
-    if(sessionId || sessionStore.has(sessionId)){
+    if(sessionId && sessionStore.has(sessionId)){
         req.user = sessionStore.get(sessionId);
         console.log("セッションを使ったログインがありました");
         next(); // 認証OKなら次へ
@@ -43,7 +43,7 @@ function authenticate(req, res, next) {
             next(); // 認証OKなら次へ
         } catch (err) {
             res.clearCookie('auth_token'); // トークンが無効なら削除
-            return res.redirect('/@dash'); // 再ログインを促す
+            return res.redirect('/login'); // 再ログインを促す
         }
     }
 }

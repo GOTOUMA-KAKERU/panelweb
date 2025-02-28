@@ -115,8 +115,6 @@ ws.onmessage = function(event){
     }
 };
 
-
-
 function romajiToHiragana(str) {
     // ローマ字とひらがなをマッピングするルール
     const romajiMap = {
@@ -189,15 +187,6 @@ function dash_edit(){
                 <li draggable="true">aaasdaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
                 <li draggable="true">asssdaa<button><img src="./others/icons/i_remove.svg" alt=""></button></li>
             </ul>
-            <ul id="edit_page_list_add">
-                <li>dftabc</li>
-                <li>sdaabc</li>
-                <li>adaabc</li>
-                <li>awdbc</li>
-                <li>aabc</li>
-                <li>abcd</li>
-                <li>absc</li>
-            </ul>
         </div>
         `;
         
@@ -232,13 +221,14 @@ function dash_edit(){
 function dash_plus(){
     const dashboard = document.getElementById("dashboard");
     dashboard.innerHTML = `
-        
-        <form action="" method="POST">
-            <input type="text" placeholder="リンクURL">
+        <link rel="stylesheet" href="./others/style/add.css">
+        <form id="add_links" action="" method="POST">
+            <input id="add_links_url" type="text" placeholder="URL">
             <div class="favicons">
                 <label>
                     <input type="radio" name="favicons" value="1" hidden>
                     <img src="option1.png" alt="Option 1">
+                    
                 </label>
                 <label>
                     <input type="radio" name="favicons" value="2" hidden>
@@ -246,7 +236,8 @@ function dash_plus(){
                 </label>
                 <label>
                     <input type="radio" name="favicons" value="3" hidden>
-                    <img src="option2.png" alt="Option 2">
+                    <img src="./others/icons/i_upload.svg" alt="Option 3">
+                    <p>アップロード</p>
                 </label>
             </div>
         </form>
