@@ -227,12 +227,12 @@ function dash_plus(){
             <div class="favicons">
                 <label>
                     <input type="radio" name="favicons" value="1" hidden>
-                    <img src="option1.png" alt="Option 1">
+                    <img src="./others/icons/i_none.svg" alt="Option 1">
                     
                 </label>
                 <label>
                     <input type="radio" name="favicons" value="2" hidden>
-                    <img src="option2.png" alt="Option 2">
+                    <img src="./others/icons/i_none.svg" alt="Option 2">
                 </label>
                 <label>
                     <input type="radio" name="favicons" value="3" hidden>
